@@ -10,6 +10,8 @@ npm run jest
 ## running using npx
 npx jest
 npx jest test/sum.test.js # running test on specific file
+npx jest --runTestsByPath test/sum.test.js # running test on specific file
+npx jest --testNamePattern "test sum function" # running test on spesific pattern name
 
 
 ## install babel for supporting module type
