@@ -12,3 +12,18 @@ test('mock async function', async () => {
     expect(from.mock.calls.length).toBe(1)
     await expect(from.mock.results[0].value).resolves.toBe(1000)
 })
+
+test.failing('mock async function rejected', async () => {
+    const from = jest.fn()
+    from.mockRejectedValueOnce(new Error('Ups'))
+
+    await getBalance('Ricid', from)
+})
+
+test('mock async function error matchers', async () => {
+    const from = jest.fn()
+    from.mockRejectedValueOnce('Ups')
+
+    await expect(getBalance('Ricid', from)).rejects.toBe('Ups')
+})
+
